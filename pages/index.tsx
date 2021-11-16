@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import utilStyles from '../styles/utils.module.css';
 import FormattedDate from '../components/FormattedDate';
-import Layout, { siteTitle } from '../components/layout';
+import Layout, { siteTitle } from '../components/Layout';
 
 const Home: React.FC = () => {
   const todayDate = new Date();

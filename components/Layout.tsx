@@ -1,19 +1,18 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from './layout.module.css';
-import utilStyles from '../styles/utils.module.css';
 import Link from 'next/link';
+import utilStyles from '../styles/utils.module.css';
 
 const name = 'James';
 export const siteTitle = 'Game of life 2021';
 
-export default function Layout({
-  children,
-  home,
-}: {
-  children: React.ReactNode;
+interface ownProps {
   home?: boolean;
-}) {
+  children: React.ReactNode;
+}
+
+const Layout: React.FC<ownProps> = ({ home = false, children }: ownProps) => {
   return (
     <div className={styles.container}>
       <Head>
@@ -76,4 +75,6 @@ export default function Layout({
       )}
     </div>
   );
-}
+};
+
+export default Layout;
