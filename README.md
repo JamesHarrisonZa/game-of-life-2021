@@ -13,3 +13,7 @@ Playground for me to learn some new tech
     - Pages become isolated. (If one page throws an error, the rest of the application would still work)
   - Automatically prefetches the code for the linked page in the background
     - The next page transition will be near-instant.
+- `<Image>` component
+  - Ensuring they are responsive on different screen sizes
+  - [Optimised](https://nextjs.org/docs/basic-features/image-optimization)
+  - Lazy loaded by default and load when they enter the viewport.
