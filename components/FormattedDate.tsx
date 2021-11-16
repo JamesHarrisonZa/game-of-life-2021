@@ -6,7 +6,6 @@ interface ownProps {
 
 const CustomDate: React.FC<ownProps> = ({ date }: { date: Date }) => {
   const dateString = date.toISOString();
-  console.log(dateString);
   const dateIso = parseISO(dateString);
   return (
     <time dateTime={dateString}>{format(dateIso, 'eeee d LLLL yyyy')}</time>
