@@ -19,7 +19,6 @@ const Home: React.FC = () => {
       <Box p={4}>
         <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10}>
           <GameType
-            // icon={<Icon as={FcAssistant} w={10} h={10} />}
             title={'42'}
             linkUrl={'/game/forty-two'}
             text={
@@ -27,7 +26,6 @@ const Home: React.FC = () => {
             }
           />
           <GameType
-            // icon={<Icon as={FcDonate} w={10} h={10} />}
             title={'Random'}
             linkUrl={'/game/random'}
             text={
@@ -35,7 +33,6 @@ const Home: React.FC = () => {
             }
           />
           <GameType
-            // icon={<Icon as={FcDonate} w={10} h={10} />}
             title={'Custom'}
             linkUrl={'/game/custom'}
             text={

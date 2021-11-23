@@ -53,8 +53,6 @@ const Navbar: React.FC = () => {
                   </Center>
                   <br />
                   <MenuDivider />
-                  {/* <MenuItem>Your Servers</MenuItem>
-                  <MenuItem>Account Settings</MenuItem> */}
                   <MenuItem>Logout</MenuItem>
                 </MenuList>
               </Menu>

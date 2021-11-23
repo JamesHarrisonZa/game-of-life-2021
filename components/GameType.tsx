@@ -1,4 +1,4 @@
-import { Button, Text, Stack, Flex } from '@chakra-ui/react';
+import { Button, Text, Stack } from '@chakra-ui/react';
 import { ReactElement } from 'react';
 import Link from 'next/link';
 
@@ -12,18 +12,6 @@ interface ownProps {
 const GameType = ({ title, linkUrl, text, icon }: ownProps) => {
   return (
     <Stack>
-      {/* <Flex
-        w={16}
-        h={16}
-        align={'center'}
-        justify={'center'}
-        color={'white'}
-        rounded={'full'}
-        bg={'green.100'}
-        mb={1}
-      >
-        {icon}
-      </Flex> */}
       <Link href={linkUrl}>
         <Button colorScheme="teal">{title}</Button>
       </Link>
