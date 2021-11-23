@@ -8,7 +8,7 @@ const Home: React.FC = () => {
   const todayDate = new Date();
 
   return (
-    <Layout home>
+    <Layout>
       <Head>
         <title>{siteTitle}</title>
       </Head>
