@@ -24,8 +24,8 @@ const Footer: React.FC = () => {
       >
         <Stack direction={'row'} spacing={6}>
           <Link href={'/'}>Home</Link>
-          {/* <Link href={'/About'}>About</Link>
-          <Link href={'/Contact'}>Contact</Link> */}
+          <Link href={'/info/about'}>About</Link>
+          <Link href={'/info/contact'}>Contact</Link>
         </Stack>
         <Text>© 2021 James Harrison</Text>
       </Container>

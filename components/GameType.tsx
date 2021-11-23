@@ -9,7 +9,7 @@ interface ownProps {
   icon?: ReactElement;
 }
 
-const GameType = ({ title, linkUrl, text, icon }: ownProps) => {
+const GameType = ({ title, linkUrl, text }: ownProps) => {
   return (
     <Stack>
       <Link href={linkUrl}>
