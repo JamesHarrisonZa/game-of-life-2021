@@ -1,3 +1,4 @@
+import { Center, Heading } from '@chakra-ui/react';
 import Head from 'next/head';
 import Layout, { siteTitle } from '../../components/Layout';
 
@@ -8,7 +9,9 @@ const GameRandom: React.FC = () => {
         <title>{siteTitle}</title>
       </Head>
 
-      <h1>Will randomise the grid</h1>
+      <Center>
+        <Heading>Will randomise the grid</Heading>
+      </Center>
     </Layout>
   );
 };

@@ -2,7 +2,7 @@ import { Center, Heading } from '@chakra-ui/react';
 import Head from 'next/head';
 import Layout, { siteTitle } from '../../components/Layout';
 
-const GameFortyTwo: React.FC = () => {
+const GameRandom: React.FC = () => {
   return (
     <Layout>
       <Head>
@@ -10,10 +10,10 @@ const GameFortyTwo: React.FC = () => {
       </Head>
 
       <Center>
-        <Heading>42</Heading>
+        <Heading>Will allow for customising the grid</Heading>
       </Center>
     </Layout>
   );
 };
 
-export default GameFortyTwo;
+export default GameRandom;
