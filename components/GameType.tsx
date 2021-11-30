@@ -9,7 +9,7 @@ interface ownProps {
   icon?: ReactElement;
 }
 
-const GameType = ({ title, linkUrl, text }: ownProps) => {
+const GameType: React.FC<ownProps> = ({ title, linkUrl, text }: ownProps) => {
   return (
     <Stack>
       <Link href={linkUrl} passHref>
@@ -19,4 +19,5 @@ const GameType = ({ title, linkUrl, text }: ownProps) => {
     </Stack>
   );
 };
+
 export default GameType;
