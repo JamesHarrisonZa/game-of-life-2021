@@ -1,4 +1,3 @@
-import { Center, Heading } from '@chakra-ui/react';
 import Head from 'next/head';
 import Layout, { siteTitle } from '../../components/Layout';
 import RandomGame from '../../components/RandomGame';

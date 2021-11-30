@@ -10,11 +10,6 @@ interface ownProps {
   gameOfLife: GameOfLife;
 }
 
-const duplicateRow = (gridDiv: HTMLDivElement, rowDiv: HTMLDivElement) => {
-  const clone = rowDiv.cloneNode(true);
-  gridDiv.appendChild(clone);
-};
-
 const RandomGame: React.FC<ownProps> = ({ startingCells, gameOfLife }) => {
   const height = startingCells.cellsHeight;
   const width = startingCells.cellsWidth;
