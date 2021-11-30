@@ -12,7 +12,7 @@ interface ownProps {
 const GameType = ({ title, linkUrl, text }: ownProps) => {
   return (
     <Stack>
-      <Link href={linkUrl}>
+      <Link href={linkUrl} passHref>
         <Button colorScheme="teal">{title}</Button>
       </Link>
       <Text color={'gray.600'}>{text}</Text>
