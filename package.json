@@ -18,6 +18,7 @@
     "@emotion/react": "^11.6.0",
     "@emotion/styled": "^11.6.0",
     "framer-motion": "^4.1.17",
+    "lodash": "^4.17.21",
     "next": "^12.0.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
@@ -29,6 +30,7 @@
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.0.3",
+    "@types/lodash": "^4.14.177",
     "@types/node": "^16.11.11",
     "@types/react": "^17.0.37",
     "date-fns": "^2.25.0",

@@ -1,4 +1,5 @@
 import { Button, Center, Box } from '@chakra-ui/react';
+import { isEqual } from 'lodash';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import Layout, { siteTitle } from '../../components/Layout';
@@ -14,11 +15,11 @@ const GameRandom: React.FC = () => {
   const [gameOfLife] = useState(new GameOfLife());
   const [gameCells, setGameCells] = useState(startingCells.cells);
 
-  const [isGameStarted, setIsGameStarted] = useState(false);
+  const [isGameInProgress, setIsGameInProgress] = useState(false);
   const [generationNumber, setGenerationNumber] = useState(0);
 
   const handleOnClick = () => {
-    setIsGameStarted(!isGameStarted);
+    setIsGameInProgress(!isGameInProgress);
   };
 
   useEffect(() => {
@@ -26,12 +27,17 @@ const GameRandom: React.FC = () => {
 
     const updateGame = () => {
       const nextGeneration = gameOfLife.getNextGeneration(gameCells);
-      setGameCells(nextGeneration);
-      setGenerationNumber(generationNumber + 1);
+
+      if (isGameOver(gameCells, nextGeneration)) {
+        setIsGameInProgress(false);
+      } else {
+        setGameCells(nextGeneration);
+        setGenerationNumber(generationNumber + 1);
+      }
     };
 
     const updateInterval = setInterval(() => {
-      if (isGameStarted) {
+      if (isGameInProgress) {
         updateGame();
       }
     }, updateSeconds * 1000);
@@ -39,7 +45,7 @@ const GameRandom: React.FC = () => {
     return () => {
       clearInterval(updateInterval);
     };
-  }, [gameCells, gameOfLife, generationNumber, isGameStarted]);
+  }, [gameCells, gameOfLife, generationNumber, isGameInProgress]);
 
   return (
     <Layout>
@@ -50,7 +56,7 @@ const GameRandom: React.FC = () => {
         <Button
           colorScheme="green"
           onClick={handleOnClick}
-          isLoading={isGameStarted}
+          isLoading={isGameInProgress}
           loadingText="Pause Game"
           disabled={false}
           margin={2}
@@ -73,3 +79,8 @@ const GameRandom: React.FC = () => {
 };
 
 export default GameRandom;
+
+const isGameOver = (
+  gameCells: readonly (readonly number[])[],
+  nextGeneration: readonly (readonly number[])[]
+) => isEqual(gameCells, nextGeneration);
