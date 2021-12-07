@@ -1,4 +1,4 @@
-import { Button, Center } from '@chakra-ui/react';
+import { Button, Center, Box } from '@chakra-ui/react';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import Layout, { siteTitle } from '../../components/Layout';
@@ -14,20 +14,20 @@ const GameRandom: React.FC = () => {
     new StartingCells(windowHeight, windowWidth)
   );
   const [gameOfLife] = useState(new GameOfLife());
-  const [isGameStarted, setIsGameStarted] = useState(false);
-
   const [gameCells, setGameCells] = useState(startingCells.cells);
 
-  useEffect(() => {
-    if (isGameStarted) {
-      const nextGeneration = gameOfLife.getNextGeneration(gameCells);
-      setGameCells(nextGeneration);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isGameStarted]);
+  const [isGameStarted, setIsGameStarted] = useState(false);
+  const [generationNumber, setGenerationNumber] = useState(0);
+
+  const updateGame = () => {
+    setGenerationNumber(generationNumber + 1);
+    const nextGeneration = gameOfLife.getNextGeneration(gameCells);
+    setGameCells(nextGeneration);
+  };
 
   const handleOnClick = () => {
     setIsGameStarted(!isGameStarted);
+    updateGame();
   };
 
   return (
@@ -46,6 +46,9 @@ const GameRandom: React.FC = () => {
         >
           Start Game
         </Button>
+      </Center>
+      <Center>
+        <Box marginBottom={2}>{generationNumber} generations</Box>
       </Center>
       <Center>
         <GameGrid
