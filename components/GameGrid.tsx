@@ -7,12 +7,17 @@ interface ownProps {
   width: number;
 }
 
-const GameGrid: React.FC<ownProps> = ({ cells, height, width }) => {
-  const mappedCells = cells.map((row) => {
+const getMappedCells = (cells: readonly (readonly number[])[]) => {
+  if (!cells) return;
+  return cells.map((row) => {
     return row.map((col) => {
       return <Cell key={`${row}:${col}`} isAlive={col === 1} />;
     });
   });
+};
+
+const GameGrid: React.FC<ownProps> = ({ cells, height, width }) => {
+  const mappedCells = getMappedCells(cells);
 
   return (
     <Grid
