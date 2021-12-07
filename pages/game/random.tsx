@@ -10,6 +10,7 @@ const GameRandom: React.FC = () => {
 
   const startingCells = new StartingCells(windowHeight, windowWidth);
   const gameOfLife = new GameOfLife();
+  const nextGeneration = gameOfLife.getNextGeneration(startingCells.cells);
 
   return (
     <Layout>
@@ -17,7 +18,11 @@ const GameRandom: React.FC = () => {
         <title>{siteTitle}</title>
       </Head>
 
-      <GameGrid startingCells={startingCells} gameOfLife={gameOfLife} />
+      <GameGrid
+        cells={startingCells.cells}
+        height={startingCells.cellsHeight}
+        width={startingCells.cellsWidth}
+      />
     </Layout>
   );
 };
