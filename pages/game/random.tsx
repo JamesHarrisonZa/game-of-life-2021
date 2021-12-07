@@ -22,20 +22,19 @@ const GameRandom: React.FC = () => {
     setIsGameInProgress(!isGameInProgress);
   };
 
+  const updateGame = () => {
+    const nextGeneration = gameOfLife.getNextGeneration(gameCells);
+
+    if (isGameOver(gameCells, nextGeneration)) {
+      setIsGameInProgress(false);
+    } else {
+      setGameCells(nextGeneration);
+      setGenerationNumber(generationNumber + 1);
+    }
+  };
+
   useEffect(() => {
     var updateSeconds = 1;
-
-    const updateGame = () => {
-      const nextGeneration = gameOfLife.getNextGeneration(gameCells);
-
-      if (isGameOver(gameCells, nextGeneration)) {
-        setIsGameInProgress(false);
-      } else {
-        setGameCells(nextGeneration);
-        setGenerationNumber(generationNumber + 1);
-      }
-    };
-
     const updateInterval = setInterval(() => {
       if (isGameInProgress) {
         updateGame();
