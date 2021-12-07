@@ -9,9 +9,9 @@ interface ownProps {
 
 const getMappedCells = (cells: readonly (readonly number[])[]) => {
   if (!cells) return;
-  return cells.map((row) => {
-    return row.map((col) => {
-      return <Cell key={`${row}:${col}`} isAlive={col === 1} />;
+  return cells.map((row, rowIndex) => {
+    return row.map((col, colIndex) => {
+      return <Cell key={`${rowIndex}:${colIndex}`} isAlive={col === 1} />;
     });
   });
 };
