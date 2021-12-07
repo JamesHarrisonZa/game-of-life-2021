@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import Layout, { siteTitle } from '../../components/Layout';
-import RandomGame from '../../components/RandomGame';
+import GameGrid from '../../components/GameGrid';
 import { GameOfLife } from '../../lib/gameOfLife';
 import { StartingCells } from '../../lib/startingCells';
 
@@ -17,7 +17,7 @@ const GameRandom: React.FC = () => {
         <title>{siteTitle}</title>
       </Head>
 
-      <RandomGame startingCells={startingCells} gameOfLife={gameOfLife} />
+      <GameGrid startingCells={startingCells} gameOfLife={gameOfLife} />
     </Layout>
   );
 };

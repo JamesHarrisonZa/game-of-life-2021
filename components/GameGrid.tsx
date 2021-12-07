@@ -1,6 +1,4 @@
-import { Box, Grid, GridItem } from '@chakra-ui/react';
-import { tr } from 'date-fns/locale';
-import { useState } from 'react';
+import { Grid } from '@chakra-ui/react';
 import { GameOfLife } from '../lib/gameOfLife';
 import { StartingCells } from '../lib/startingCells';
 import Cell from './Cell';
@@ -10,7 +8,7 @@ interface ownProps {
   gameOfLife: GameOfLife;
 }
 
-const RandomGame: React.FC<ownProps> = ({ startingCells, gameOfLife }) => {
+const GameGrid: React.FC<ownProps> = ({ startingCells, gameOfLife }) => {
   const height = startingCells.cellsHeight;
   const width = startingCells.cellsWidth;
 
@@ -31,4 +29,4 @@ const RandomGame: React.FC<ownProps> = ({ startingCells, gameOfLife }) => {
   );
 };
 
-export default RandomGame;
+export default GameGrid;
