@@ -19,11 +19,11 @@ const GameRandom: React.FC = () => {
   const [isGameOver, setIsGameOver] = useState(false);
   const [generationNumber, setGenerationNumber] = useState(0);
 
-  const handleOnClick = () => {
+  const startOrPauseGame = () => {
     setIsGameInProgress(!isGameInProgress);
   };
 
-  const handleOnRestartClick = () => {
+  const restartGame = () => {
     const startingCells = new StartingCells(windowHeight, windowWidth);
     setGameCells(startingCells.cells);
     setIsGameOver(false);
@@ -67,13 +67,13 @@ const GameRandom: React.FC = () => {
       </Head>
       <Center>
         {isGameOver ? (
-          <Button colorScheme="red" onClick={handleOnRestartClick} margin={2}>
+          <Button colorScheme="red" onClick={restartGame} margin={2}>
             Reset
           </Button>
         ) : (
           <Button
             colorScheme="green"
-            onClick={handleOnClick}
+            onClick={startOrPauseGame}
             isLoading={isGameInProgress}
             loadingText="Pause Game"
             disabled={false}
