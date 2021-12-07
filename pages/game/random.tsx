@@ -16,25 +16,38 @@ const GameRandom: React.FC = () => {
   const [gameCells, setGameCells] = useState(startingCells.cells);
 
   const [isGameInProgress, setIsGameInProgress] = useState(false);
+  const [isGameOver, setIsGameOver] = useState(false);
   const [generationNumber, setGenerationNumber] = useState(0);
 
   const handleOnClick = () => {
     setIsGameInProgress(!isGameInProgress);
   };
 
+  const handleOnRestartClick = () => {
+    const startingCells = new StartingCells(windowHeight, windowWidth);
+    setGameCells(startingCells.cells);
+    setIsGameOver(false);
+    setGenerationNumber(0);
+  };
+
   const updateGame = () => {
     const nextGeneration = gameOfLife.getNextGeneration(gameCells);
 
-    if (isGameOver(gameCells, nextGeneration)) {
-      setIsGameInProgress(false);
+    if (noChange(gameCells, nextGeneration)) {
+      updateGameOver();
     } else {
       setGameCells(nextGeneration);
       setGenerationNumber(generationNumber + 1);
     }
   };
 
+  const updateGameOver = () => {
+    setIsGameInProgress(false);
+    setIsGameOver(true);
+  };
+
   useEffect(() => {
-    var updateSeconds = 1;
+    var updateSeconds = 0.5;
     const updateInterval = setInterval(() => {
       if (isGameInProgress) {
         updateGame();
@@ -44,6 +57,7 @@ const GameRandom: React.FC = () => {
     return () => {
       clearInterval(updateInterval);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [gameCells, gameOfLife, generationNumber, isGameInProgress]);
 
   return (
@@ -52,16 +66,22 @@ const GameRandom: React.FC = () => {
         <title>{siteTitle}</title>
       </Head>
       <Center>
-        <Button
-          colorScheme="green"
-          onClick={handleOnClick}
-          isLoading={isGameInProgress}
-          loadingText="Pause Game"
-          disabled={false}
-          margin={2}
-        >
-          Start Game
-        </Button>
+        {isGameOver ? (
+          <Button colorScheme="red" onClick={handleOnRestartClick} margin={2}>
+            Reset
+          </Button>
+        ) : (
+          <Button
+            colorScheme="green"
+            onClick={handleOnClick}
+            isLoading={isGameInProgress}
+            loadingText="Pause Game"
+            disabled={false}
+            margin={2}
+          >
+            Start Game
+          </Button>
+        )}
       </Center>
       <Center>
         <Box marginBottom={2}>{generationNumber} generations</Box>
@@ -79,7 +99,7 @@ const GameRandom: React.FC = () => {
 
 export default GameRandom;
 
-const isGameOver = (
+const noChange = (
   gameCells: readonly (readonly number[])[],
   nextGeneration: readonly (readonly number[])[]
 ) => isEqual(gameCells, nextGeneration);
