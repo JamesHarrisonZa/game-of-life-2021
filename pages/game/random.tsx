@@ -11,7 +11,7 @@ const GameRandom: React.FC = () => {
   const windowWidth = 200; //TODO use viewport/available space
 
   const startingCells = new StartingCells(windowHeight, windowWidth);
-  const gameOfLife = new GameOfLife();
+  const [gameOfLife] = useState(new GameOfLife());
   const [gameCells, setGameCells] = useState(startingCells.cells);
 
   const [isGameStarted, setIsGameStarted] = useState(false);
@@ -21,14 +21,14 @@ const GameRandom: React.FC = () => {
     setIsGameStarted(!isGameStarted);
   };
 
-  const updateGame = () => {
-    const nextGeneration = gameOfLife.getNextGeneration(gameCells);
-    setGameCells(nextGeneration);
-    setGenerationNumber(generationNumber + 1);
-  };
-
   useEffect(() => {
     var updateSeconds = 1;
+
+    const updateGame = () => {
+      const nextGeneration = gameOfLife.getNextGeneration(gameCells);
+      setGameCells(nextGeneration);
+      setGenerationNumber(generationNumber + 1);
+    };
 
     const updateInterval = setInterval(() => {
       if (isGameStarted) {
