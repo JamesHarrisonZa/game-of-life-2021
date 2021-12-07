@@ -37,11 +37,12 @@ const GameRandom: React.FC = () => {
       </Head>
       <Center>
         <Button
-          colorScheme="blue"
+          colorScheme="green"
           onClick={handleOnClick}
           isLoading={isGameStarted}
           loadingText="Pause Game"
           disabled={false}
+          margin={2}
         >
           Start Game
         </Button>
