@@ -18,11 +18,11 @@ const Footer: React.FC = () => {
         maxW={'6xl'}
         minH={20}
         maxH={20}
-        py={4}
+        px={10}
         direction={{ base: 'column', md: 'row' }}
-        spacing={4}
         justify={{ base: 'center', md: 'space-between' }}
         align={{ base: 'center', md: 'center' }}
+        spacing={4}
       >
         <Stack direction={'row'} spacing={6}>
           <Link href={'/'}>Home</Link>
