@@ -37,18 +37,20 @@ const GameRandom: FC = () => {
     setIsGameInProgress(!isGameInProgress);
   };
 
-  const resetGame = () => {
-    setIsGameInProgress(false);
-    setIsGameOver(false);
-
+  const resetStartingAndGameCells = () => {
     const startingCells = new StartingCells(
       getWindowHeight(),
       getWindowWidth()
     );
     setStartingCells(startingCells);
-
     setGameCells(startingCells.cells);
+  };
 
+  const resetGame = () => {
+    setIsGameInProgress(false);
+    setIsGameOver(false);
+
+    resetStartingAndGameCells();
     setGenerationNumber(0);
   };
 
@@ -65,7 +67,6 @@ const GameRandom: FC = () => {
   };
 
   const handleResize = () => {
-    // setStartingCells(new StartingCells(getWindowHeight(), getWindowWidth()));
     resetGame();
   };
 
