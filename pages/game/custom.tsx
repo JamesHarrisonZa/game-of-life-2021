@@ -1,8 +1,9 @@
 import { Center, Heading } from '@chakra-ui/react';
+import { FC } from 'react';
 import Head from 'next/head';
 import Layout, { siteTitle } from '../../components/layout/Layout';
 
-const GameRandom: React.FC = () => {
+const GameRandom: FC = () => {
   return (
     <Layout>
       <Head>

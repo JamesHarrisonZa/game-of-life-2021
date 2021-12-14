@@ -14,9 +14,10 @@ import {
   Center,
 } from '@chakra-ui/react';
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
+import { FC } from 'react';
 import Link from 'next/link';
 
-const Navbar: React.FC = () => {
+const Navbar: FC = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   return (
     <>

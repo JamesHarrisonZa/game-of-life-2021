@@ -5,9 +5,10 @@ import {
   Text,
   useColorModeValue,
 } from '@chakra-ui/react';
+import { FC } from 'react';
 import Link from 'next/link';
 
-const Footer: React.FC = () => {
+const Footer: FC = () => {
   return (
     <Box
       bg={useColorModeValue('gray.100', 'gray.900')}

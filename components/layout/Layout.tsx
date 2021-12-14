@@ -1,5 +1,6 @@
 import { Flex } from '@chakra-ui/react';
 import { Container } from '@chakra-ui/layout';
+import { FC } from 'react';
 import Head from 'next/head';
 import Navbar from './Navbar';
 import Footer from './Footer';
@@ -9,7 +10,7 @@ interface ownProps {
   children: React.ReactNode;
 }
 
-const Layout: React.FC<ownProps> = ({ children }: ownProps) => {
+const Layout: FC<ownProps> = ({ children }: ownProps) => {
   return (
     <>
       <Head>

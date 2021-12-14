@@ -1,10 +1,11 @@
 import { Box } from '@chakra-ui/react';
+import { FC } from 'react';
 
 interface ownProps {
   isAlive: boolean;
 }
 
-const Cell: React.FC<ownProps> = ({ isAlive }) => {
+const Cell: FC<ownProps> = ({ isAlive }) => {
   if (isAlive) {
     return <Box w="10" h="10" bg="green.500" />;
   }

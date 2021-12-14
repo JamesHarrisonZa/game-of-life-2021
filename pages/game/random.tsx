@@ -1,13 +1,13 @@
 import { Button, Center, Text } from '@chakra-ui/react';
 import { isEqual } from 'lodash';
 import Head from 'next/head';
-import { useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import Layout, { siteTitle } from '../../components/layout/Layout';
 import GameGrid from '../../components/game/GameGrid';
 import { GameOfLife } from '../../lib/gameOfLife';
 import { StartingCells } from '../../lib/startingCells';
 
-const GameRandom: React.FC = () => {
+const GameRandom: FC = () => {
   const windowHeight = 200; //TODO use viewport/available space
   const windowWidth = 200; //TODO use viewport/available space
 
