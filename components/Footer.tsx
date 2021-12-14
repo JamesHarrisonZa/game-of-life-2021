@@ -16,6 +16,8 @@ const Footer: React.FC = () => {
       <Container
         as={Stack}
         maxW={'6xl'}
+        minH={20}
+        maxH={20}
         py={4}
         direction={{ base: 'column', md: 'row' }}
         spacing={4}
