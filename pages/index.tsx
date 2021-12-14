@@ -1,4 +1,4 @@
-import { Box, SimpleGrid, Center } from '@chakra-ui/react';
+import { SimpleGrid, Center, VStack } from '@chakra-ui/react';
 import Head from 'next/head';
 import GameType from '../components/GameType';
 import FormattedDate from '../components/FormattedDate';
@@ -12,11 +12,10 @@ const Home: React.FC = () => {
       <Head>
         <title>{siteTitle}</title>
       </Head>
-
-      <Center p={4}>
-        <FormattedDate date={todayDate} />
-      </Center>
-      <Box p={4}>
+      <VStack w="full" h="full" p={10} spacing={10}>
+        <Center p={4}>
+          <FormattedDate date={todayDate} />
+        </Center>
         <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10}>
           <GameType
             title={'42'}
@@ -40,7 +39,7 @@ const Home: React.FC = () => {
             }
           />
         </SimpleGrid>
-      </Box>
+      </VStack>
     </Layout>
   );
 };
