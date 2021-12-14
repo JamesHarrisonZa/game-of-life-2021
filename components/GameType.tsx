@@ -1,21 +1,23 @@
 import { Button, Text, Stack } from '@chakra-ui/react';
-import { ReactElement } from 'react';
 import Link from 'next/link';
 
 interface ownProps {
   title: string;
   linkUrl: string;
-  text: string;
-  icon?: ReactElement;
+  children: React.ReactNode;
 }
 
-const GameType: React.FC<ownProps> = ({ title, linkUrl, text }: ownProps) => {
+const GameType: React.FC<ownProps> = ({
+  title,
+  linkUrl,
+  children,
+}: ownProps) => {
   return (
     <Stack>
       <Link href={linkUrl} passHref>
         <Button colorScheme="teal">{title}</Button>
       </Link>
-      <Text color={'gray.600'}>{text}</Text>
+      {children}
     </Stack>
   );
 };
