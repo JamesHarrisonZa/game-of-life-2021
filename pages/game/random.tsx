@@ -36,7 +36,7 @@ const GameRandom: React.FC = () => {
   const updateGame = () => {
     const nextGeneration = gameOfLife.getNextGeneration(gameCells);
 
-    if (noChange(gameCells, nextGeneration)) {
+    if (isEqual(gameCells, nextGeneration)) {
       setIsGameInProgress(false);
       setIsGameOver(true);
     } else {
@@ -95,8 +95,3 @@ const GameRandom: React.FC = () => {
 };
 
 export default GameRandom;
-
-const noChange = (
-  gameCells: readonly (readonly number[])[],
-  nextGeneration: readonly (readonly number[])[]
-) => isEqual(gameCells, nextGeneration);
