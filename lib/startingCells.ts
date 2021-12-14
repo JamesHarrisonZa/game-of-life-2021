@@ -2,7 +2,7 @@ export class StartingCells {
   public readonly cellsHeight: number;
   public readonly cellsWidth: number;
   public readonly cells: ReadonlyArray<ReadonlyArray<number>>;
-  private readonly _fillPercentage = 40;
+  private readonly _fillPercentage = 100;
 
   constructor(windowHeight: number, windowWidth: number) {
     this.cellsHeight = this.getCellsHeight(windowHeight);
