@@ -1,23 +1,37 @@
 import { Button, Center, Text } from '@chakra-ui/react';
 import { isEqual } from 'lodash';
 import Head from 'next/head';
-import { FC, useEffect, useState } from 'react';
+import { FC, useEffect, useLayoutEffect, useState } from 'react';
 import Layout, { siteTitle } from '../../components/layout/Layout';
 import GameGrid from '../../components/game/GameGrid';
 import { GameOfLife } from '../../lib/gameOfLife';
 import { StartingCells } from '../../lib/startingCells';
 
-const GameRandom: FC = () => {
-  const windowHeight = (window.innerHeight - 260) / 4; //TODO this better & investigate issue when refreshing
-  const windowWidth = (window.innerWidth - 40) / 4; //TODO this better & investigate issue when refreshing
+const getWindowWidth = () => {
+  if (window.innerWidth < 40) {
+    return 10;
+  }
+  return (window.innerWidth - 40) / 4; //TODO this better & investigate issue when refreshing
+};
 
-  const startingCells = new StartingCells(windowHeight, windowWidth);
-  const [gameOfLife] = useState(new GameOfLife());
+const getWindowHeight = () => {
+  if (window.innerHeight < 260) {
+    return 65;
+  }
+  return (window.innerHeight - 260) / 4; //TODO this better & investigate issue when refreshing
+};
+
+const GameRandom: FC = () => {
+  const [startingCells, setStartingCells] = useState(
+    new StartingCells(getWindowHeight(), getWindowWidth())
+  );
   const [gameCells, setGameCells] = useState(startingCells.cells);
 
   const [isGameInProgress, setIsGameInProgress] = useState(false);
   const [isGameOver, setIsGameOver] = useState(false);
   const [generationNumber, setGenerationNumber] = useState(0);
+
+  const gameOfLife = new GameOfLife();
 
   const startOrPauseGame = () => {
     setIsGameInProgress(!isGameInProgress);
@@ -27,7 +41,12 @@ const GameRandom: FC = () => {
     setIsGameInProgress(false);
     setIsGameOver(false);
 
-    const startingCells = new StartingCells(windowHeight, windowWidth);
+    const startingCells = new StartingCells(
+      getWindowHeight(),
+      getWindowWidth()
+    );
+    setStartingCells(startingCells);
+
     setGameCells(startingCells.cells);
 
     setGenerationNumber(0);
@@ -44,6 +63,19 @@ const GameRandom: FC = () => {
       setGenerationNumber(generationNumber + 1);
     }
   };
+
+  const handleResize = () => {
+    // setStartingCells(new StartingCells(getWindowHeight(), getWindowWidth()));
+    resetGame();
+  };
+
+  useLayoutEffect(() => {
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     var updateSeconds = 0.5;
