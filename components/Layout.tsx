@@ -1,3 +1,4 @@
+import { Flex } from '@chakra-ui/react';
 import { Container } from '@chakra-ui/layout';
 import Head from 'next/head';
 import Navbar from './Navbar';
@@ -19,9 +20,18 @@ const Layout: React.FC<ownProps> = ({ children }: ownProps) => {
         />
         <meta name="og:title" content={siteTitle} />
       </Head>
-      <Navbar />
-      <Container minHeight="85vh">{children}</Container>
-      <Footer />
+      <Flex
+        shrink={0}
+        direction="column"
+        justifyContent="space-between"
+        minHeight="100vh"
+      >
+        <Navbar />
+        <Container flexGrow={1} maxW="container.xl" p={0}>
+          {children}
+        </Container>
+        <Footer />
+      </Flex>
     </>
   );
 };
