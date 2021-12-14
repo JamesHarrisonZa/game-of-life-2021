@@ -1,4 +1,4 @@
-import { Button, Center, Box } from '@chakra-ui/react';
+import { Button, Center, Text } from '@chakra-ui/react';
 import { isEqual } from 'lodash';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
@@ -78,7 +78,8 @@ const GameRandom: React.FC = () => {
             Start Game
           </Button>
         )}
-        <Box margin={4}>{generationNumber} generations</Box>
+        <Text marginRight={2}> {generationNumber} </Text>
+        <Text> generations</Text>
         <Button colorScheme="red" onClick={resetGame} margin={4} width={40}>
           Reset Game
         </Button>
