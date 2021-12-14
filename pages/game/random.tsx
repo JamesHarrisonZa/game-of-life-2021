@@ -23,10 +23,13 @@ const GameRandom: React.FC = () => {
     setIsGameInProgress(!isGameInProgress);
   };
 
-  const restartGame = () => {
+  const resetGame = () => {
+    setIsGameInProgress(false);
+    setIsGameOver(false);
+
     const startingCells = new StartingCells(windowHeight, windowWidth);
     setGameCells(startingCells.cells);
-    setIsGameOver(false);
+
     setGenerationNumber(0);
   };
 
@@ -34,16 +37,12 @@ const GameRandom: React.FC = () => {
     const nextGeneration = gameOfLife.getNextGeneration(gameCells);
 
     if (noChange(gameCells, nextGeneration)) {
-      updateGameOver();
+      setIsGameInProgress(false);
+      setIsGameOver(true);
     } else {
       setGameCells(nextGeneration);
       setGenerationNumber(generationNumber + 1);
     }
-  };
-
-  const updateGameOver = () => {
-    setIsGameInProgress(false);
-    setIsGameOver(true);
   };
 
   useEffect(() => {
@@ -66,25 +65,22 @@ const GameRandom: React.FC = () => {
         <title>{siteTitle}</title>
       </Head>
       <Center>
-        {isGameOver ? (
-          <Button colorScheme="red" onClick={restartGame} margin={2}>
-            Reset
-          </Button>
-        ) : (
+        {!isGameOver && (
           <Button
             colorScheme="green"
             onClick={startOrPauseGame}
             isLoading={isGameInProgress}
             loadingText="Pause Game"
             disabled={false}
-            margin={2}
+            margin={4}
           >
             Start Game
           </Button>
         )}
-      </Center>
-      <Center>
-        <Box marginBottom={2}>{generationNumber} generations</Box>
+        <Box margin={4}>{generationNumber} generations</Box>
+        <Button colorScheme="red" onClick={resetGame} margin={4}>
+          Reset Game
+        </Button>
       </Center>
       <Center>
         <GameGrid
