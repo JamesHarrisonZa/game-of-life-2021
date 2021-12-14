@@ -8,8 +8,8 @@ import { GameOfLife } from '../../lib/gameOfLife';
 import { StartingCells } from '../../lib/startingCells';
 
 const GameRandom: FC = () => {
-  const windowHeight = 200; //TODO use viewport/available space
-  const windowWidth = 200; //TODO use viewport/available space
+  const windowHeight = (window.innerHeight - 260) / 4; //TODO this better & investigate issue when refreshing
+  const windowWidth = (window.innerWidth - 40) / 4; //TODO this better & investigate issue when refreshing
 
   const startingCells = new StartingCells(windowHeight, windowWidth);
   const [gameOfLife] = useState(new GameOfLife());
