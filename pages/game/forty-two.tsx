@@ -1,6 +1,6 @@
 import { Center, Heading } from '@chakra-ui/react';
 import Head from 'next/head';
-import Layout, { siteTitle } from '../../components/Layout';
+import Layout, { siteTitle } from '../../components/layout/Layout';
 
 const GameFortyTwo: React.FC = () => {
   return (

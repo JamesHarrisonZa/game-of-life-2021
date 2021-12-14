@@ -2,8 +2,8 @@ import { Button, Center, Box } from '@chakra-ui/react';
 import { isEqual } from 'lodash';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
-import Layout, { siteTitle } from '../../components/Layout';
-import GameGrid from '../../components/GameGrid';
+import Layout, { siteTitle } from '../../components/layout/Layout';
+import GameGrid from '../../components/game/GameGrid';
 import { GameOfLife } from '../../lib/gameOfLife';
 import { StartingCells } from '../../lib/startingCells';
 

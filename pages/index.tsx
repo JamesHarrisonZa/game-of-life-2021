@@ -1,8 +1,8 @@
 import { SimpleGrid, Center, VStack, Text } from '@chakra-ui/react';
 import Head from 'next/head';
-import GameType from '../components/GameType';
+import GameType from '../components/game/GameType';
 import FormattedDate from '../components/FormattedDate';
-import Layout, { siteTitle } from '../components/Layout';
+import Layout, { siteTitle } from '../components/layout/Layout';
 
 const Home: React.FC = () => {
   const todayDate = new Date();
