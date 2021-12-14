@@ -73,12 +73,13 @@ const GameRandom: React.FC = () => {
             loadingText="Pause Game"
             disabled={false}
             margin={4}
+            width={40}
           >
             Start Game
           </Button>
         )}
         <Box margin={4}>{generationNumber} generations</Box>
-        <Button colorScheme="red" onClick={resetGame} margin={4}>
+        <Button colorScheme="red" onClick={resetGame} margin={4} width={40}>
           Reset Game
         </Button>
       </Center>
