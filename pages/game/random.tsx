@@ -1,24 +1,30 @@
 import { Button, Center, Text } from '@chakra-ui/react';
 import { isEqual } from 'lodash';
 import Head from 'next/head';
-import { FC, useEffect, useLayoutEffect, useState } from 'react';
+import { FC, useCallback, useEffect, useLayoutEffect, useState } from 'react';
 import Layout, { siteTitle } from '../../components/layout/Layout';
 import GameGrid from '../../components/game/GameGrid';
 import { GameOfLife } from '../../lib/gameOfLife';
 import { StartingCells } from '../../lib/startingCells';
 
 const getWindowWidth = () => {
-  if (window.innerWidth < 40) {
+  if (typeof window === 'undefined') {
+    return 100; //TODO: Get initial window value as a prop
+  }
+  if (window && window.innerWidth < 40) {
     return 10;
   }
-  return (window.innerWidth - 40) / 4; //TODO this better & investigate issue when refreshing
+  return (window.innerWidth - 40) / 4; //TODO this better?
 };
 
 const getWindowHeight = () => {
-  if (window.innerHeight < 260) {
+  if (typeof window === 'undefined') {
+    return 100;
+  }
+  if (window && window.innerHeight < 260) {
     return 65;
   }
-  return (window.innerHeight - 260) / 4; //TODO this better & investigate issue when refreshing
+  return (window.innerHeight - 260) / 4; //TODO this better?
 };
 
 const GameRandom: FC = () => {
@@ -26,18 +32,17 @@ const GameRandom: FC = () => {
     new StartingCells(getWindowHeight(), getWindowWidth())
   );
   const [gameCells, setGameCells] = useState(startingCells.cells);
+  const [gameOfLife] = useState(new GameOfLife());
 
   const [isGameInProgress, setIsGameInProgress] = useState(false);
   const [isGameOver, setIsGameOver] = useState(false);
   const [generationNumber, setGenerationNumber] = useState(0);
 
-  const gameOfLife = new GameOfLife();
-
   const startOrPauseGame = () => {
     setIsGameInProgress(!isGameInProgress);
   };
 
-  const resetStartingAndGameCells = () => {
+  const resetCells = () => {
     const startingCells = new StartingCells(
       getWindowHeight(),
       getWindowWidth()
@@ -46,15 +51,13 @@ const GameRandom: FC = () => {
     setGameCells(startingCells.cells);
   };
 
-  const resetGame = () => {
+  const resetGame = useCallback(() => {
     setIsGameInProgress(false);
     setIsGameOver(false);
-
-    resetStartingAndGameCells();
     setGenerationNumber(0);
-  };
+  }, []);
 
-  const updateGame = () => {
+  const updateGame = useCallback(() => {
     const nextGeneration = gameOfLife.getNextGeneration(gameCells);
 
     if (isEqual(gameCells, nextGeneration)) {
@@ -64,19 +67,29 @@ const GameRandom: FC = () => {
       setGameCells(nextGeneration);
       setGenerationNumber(generationNumber + 1);
     }
-  };
+  }, [gameCells, gameOfLife, generationNumber]);
 
-  const handleResize = () => {
+  const handleResizeEvent = useCallback(() => {
     resetGame();
+    resetCells();
+  }, [resetGame]);
+
+  const handleResetOnClick = () => {
+    resetGame();
+    resetCells();
   };
 
-  useLayoutEffect(() => {
-    window.addEventListener('resize', handleResize);
+  useEffect(() => {
+    resetCells();
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResizeEvent);
 
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('resize', handleResizeEvent);
     };
-  }, []);
+  }, [handleResizeEvent]);
 
   useEffect(() => {
     var updateSeconds = 0.5;
@@ -89,8 +102,7 @@ const GameRandom: FC = () => {
     return () => {
       clearInterval(updateInterval);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [gameCells, gameOfLife, generationNumber, isGameInProgress]);
+  }, [gameCells, gameOfLife, generationNumber, isGameInProgress, updateGame]);
 
   return (
     <Layout>
@@ -113,7 +125,12 @@ const GameRandom: FC = () => {
         )}
         <Text marginRight={2}> {generationNumber} </Text>
         <Text> generations</Text>
-        <Button colorScheme="red" onClick={resetGame} margin={4} width={40}>
+        <Button
+          colorScheme="red"
+          onClick={handleResetOnClick}
+          margin={4}
+          width={40}
+        >
           Reset Game
         </Button>
       </Center>
