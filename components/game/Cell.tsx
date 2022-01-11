@@ -7,9 +7,9 @@ interface ownProps {
 
 const Cell: FC<ownProps> = ({ isAlive }) => {
   if (isAlive) {
-    return <Box w="10" h="10" bg="green.500" />;
+    return <Box w="10" h="10" bg="blue.500" />;
   }
-  return <Box w="10" h="10" bg="blue.500" />;
+  return <Box w="10" h="10" />;
 };
 
 export default Cell;
