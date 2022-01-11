@@ -1,4 +1,4 @@
-import { Button, Center, Text } from '@chakra-ui/react';
+import { Box, Button, Center, Text, VStack } from '@chakra-ui/react';
 import { isEqual } from 'lodash';
 import { FC, useCallback, useEffect, useLayoutEffect, useState } from 'react';
 import GameGrid from './GameGrid';
@@ -99,7 +99,7 @@ const RandomGame: FC = () => {
   }, [gameCells, gameOfLife, generationNumber, isGameInProgress, updateGame]);
 
   return (
-    <>
+    <VStack>
       <Center>
         {!isGameOver && (
           <Button
@@ -125,14 +125,14 @@ const RandomGame: FC = () => {
           Reset Game
         </Button>
       </Center>
-      <Center>
+      <Box>
         <GameGrid
           cells={gameCells}
           height={startingCells.cellsHeight}
           width={startingCells.cellsWidth}
         />
-      </Center>
-    </>
+      </Box>
+    </VStack>
   );
 };
 
