@@ -5,9 +5,9 @@ import GameGrid from './GameGrid';
 import { GameOfLife } from '../../lib/gameOfLife';
 import { StartingCells } from '../../lib/startingCells';
 
-const getWindowWidth = () => {
+const getGridWidth = () => {
   if (typeof window === 'undefined') {
-    return 100; //TODO: Get initial window value as a prop
+    return 100;
   }
   if (window && window.innerWidth < 40) {
     return 10;
@@ -15,7 +15,7 @@ const getWindowWidth = () => {
   return (window.innerWidth - 40) / 4; //TODO this better?
 };
 
-const getWindowHeight = () => {
+const getGridHeight = () => {
   if (typeof window === 'undefined') {
     return 100;
   }
@@ -27,7 +27,7 @@ const getWindowHeight = () => {
 
 const RandomGame: FC = () => {
   const [startingCells, setStartingCells] = useState(
-    new StartingCells(getWindowHeight(), getWindowWidth())
+    new StartingCells(getGridHeight(), getGridWidth())
   );
   const [gameCells, setGameCells] = useState(startingCells.cells);
   const [gameOfLife] = useState(new GameOfLife());
@@ -41,10 +41,7 @@ const RandomGame: FC = () => {
   };
 
   const resetCells = () => {
-    const startingCells = new StartingCells(
-      getWindowHeight(),
-      getWindowWidth()
-    );
+    const startingCells = new StartingCells(getGridHeight(), getGridWidth());
     setStartingCells(startingCells);
     setGameCells(startingCells.cells);
   };
