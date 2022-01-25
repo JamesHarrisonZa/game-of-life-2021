@@ -1,5 +1,4 @@
 import { Flex } from '@chakra-ui/react';
-import { Container } from '@chakra-ui/layout';
 import { FC } from 'react';
 import Head from 'next/head';
 import Navbar from './Navbar';
@@ -10,31 +9,20 @@ interface ownProps {
   children: React.ReactNode;
 }
 
-const Layout: FC<ownProps> = ({ children }: ownProps) => {
-  return (
-    <>
-      <Head>
-        <link rel="icon" href="/favicon.ico" />
-        <meta
-          name="description"
-          content="Welcome to my tech demo. Game of life 2021"
-        />
-        <meta name="og:title" content={siteTitle} />
-      </Head>
-      <Flex
-        shrink={0}
-        direction="column"
-        justifyContent="space-between"
-        minHeight="100vh"
-      >
-        <Navbar />
-        <Container flexGrow={1} maxW="container.xl" p={0}>
-          {children}
-        </Container>
-        <Footer />
-      </Flex>
-    </>
-  );
-};
+const Layout: FC<ownProps> = ({ children }: ownProps) => (
+  <Flex direction="column" minH="100vh">
+    <Head>
+      <link rel="icon" href="/favicon.ico" />
+      <meta
+        name="description"
+        content="Welcome to my tech demo. Game of life 2021"
+      />
+      <meta name="og:title" content={siteTitle} />
+    </Head>
+    <Navbar />
+    <Flex flexGrow={1}>{children}</Flex>
+    <Footer />
+  </Flex>
+);
 
 export default Layout;
