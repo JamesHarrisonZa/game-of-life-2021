@@ -25,12 +25,12 @@ export class StartingCells {
       return [];
     }
 
-    const filler = null as unknown as number;
+    const filler = null as unknown as number; //Cant apply map on undefined elements, need to set to null or some value first
 
-    return new Array<number>(cellsHeight)
-      .fill(filler) //Cant apply map on undefined elements, need to set to null or some value first
+    return Array<number>(cellsHeight)
+      .fill(filler)
       .map(() =>
-        new Array<number>(cellsWidth)
+        Array<number>(cellsWidth)
           .fill(filler)
           .map(() => this.getRandomBinary())
       );
