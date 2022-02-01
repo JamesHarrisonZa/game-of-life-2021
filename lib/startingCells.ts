@@ -2,7 +2,6 @@ export class StartingCells {
   public readonly cellsHeight: number;
   public readonly cellsWidth: number;
   public readonly cells: ReadonlyArray<ReadonlyArray<number>>;
-  private readonly _fillPercentage = 100;
 
   constructor(height: number, width: number) {
     this.cellsHeight = this.getCellsHeight(height);
@@ -30,12 +29,10 @@ export class StartingCells {
 
     return new Array<number>(cellsHeight)
       .fill(filler) //Cant apply map on undefined elements, need to set to null or some value first
-      .map((_, y) =>
-        new Array<number>(cellsWidth).fill(filler).map((__, x) => {
-          return this.isInAreaToRandomise(cellsHeight, cellsWidth, y, x)
-            ? this.getRandomBinary()
-            : 0;
-        })
+      .map(() =>
+        new Array<number>(cellsWidth)
+          .fill(filler)
+          .map(() => this.getRandomBinary())
       );
   }
 
@@ -43,18 +40,6 @@ export class StartingCells {
     const cellDimensionPixels = 10;
     const cellMarginPixels = 1;
     return Math.floor(sizePixels / (cellDimensionPixels + cellMarginPixels));
-  }
-
-  private isInAreaToRandomise(
-    gridHeight: number,
-    gridWidth: number,
-    y: number,
-    x: number
-  ): boolean {
-    return (
-      y < (gridHeight * this._fillPercentage) / 100 &&
-      x < (gridWidth * this._fillPercentage) / 100
-    );
   }
 
   private getRandomBinary(): number {
