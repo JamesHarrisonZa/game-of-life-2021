@@ -15,8 +15,7 @@ export class StartingCells {
   }
 
   private getCellsWidth(windowWidth: number): number {
-    const windowMargin = 2;
-    return this.getCellUnits(windowWidth) - windowMargin;
+    return this.getCellUnits(windowWidth);
   }
 
   private getStartingCells(
@@ -36,10 +35,10 @@ export class StartingCells {
       );
   }
 
-  private getCellUnits(viewPortSize: number): number {
-    const cellDimension = 10;
-    const cellMargin = 2;
-    return Math.floor(viewPortSize / cellDimension) - cellMargin;
+  private getCellUnits(sizePixels: number): number {
+    const cellDimensionPixels = 10;
+    const cellMarginPixels = 2;
+    return Math.floor(sizePixels / cellDimensionPixels) - cellMarginPixels;
   }
 
   private isInAreaToRandomise(
