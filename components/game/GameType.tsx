@@ -1,6 +1,6 @@
-import { Button, Stack } from "@chakra-ui/react";
-import { FC } from "react";
-import Link from "next/link";
+import { Button, Stack } from '@chakra-ui/react';
+import { FC } from 'react';
+import Link from 'next/link';
 
 interface ownProps {
   title: string;

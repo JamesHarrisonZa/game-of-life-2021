@@ -1,19 +1,19 @@
-import { Button, Center, Flex, Text } from "@chakra-ui/react";
-import { isEqual } from "lodash";
-import { FC, useCallback, useEffect, useLayoutEffect, useState } from "react";
-import GameGrid from "./GameGrid";
-import { GameOfLife } from "../../lib/gameOfLife";
-import { StartingCells } from "../../lib/startingCells";
+import { Button, Center, Flex, Text } from '@chakra-ui/react';
+import { isEqual } from 'lodash';
+import { FC, useCallback, useEffect, useLayoutEffect, useState } from 'react';
+import GameGrid from './GameGrid';
+import { GameOfLife } from '../../lib/gameOfLife';
+import { StartingCells } from '../../lib/startingCells';
 
 const getGridWidth = () => {
-  if (typeof window === "undefined") {
+  if (typeof window === 'undefined') {
     return 0;
   }
   return window.innerWidth / 4;
 };
 
 const getGridHeight = () => {
-  if (typeof window === "undefined") {
+  if (typeof window === 'undefined') {
     return 0;
   }
 
@@ -71,10 +71,10 @@ const RandomGame: FC = () => {
   };
 
   useLayoutEffect(() => {
-    window.addEventListener("resize", handleResizeEvent);
+    window.addEventListener('resize', handleResizeEvent);
 
     return () => {
-      window.removeEventListener("resize", handleResizeEvent);
+      window.removeEventListener('resize', handleResizeEvent);
     };
   }, [handleResizeEvent]);
 

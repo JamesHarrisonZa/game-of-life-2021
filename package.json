@@ -13,7 +13,7 @@
     "test": "jest",
     "test:coverage": "jest --coverage",
     "format": "prettier --write .",
-    "lint": "eslint --max-warnings 0 --ext ts,tsx ."
+    "lint": "next lint"
   },
   "dependencies": {
     "@chakra-ui/icons": "^1.1.1",
