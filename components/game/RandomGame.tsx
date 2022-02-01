@@ -3,7 +3,7 @@ import { isEqual } from 'lodash';
 import { FC, useCallback, useEffect, useLayoutEffect, useState } from 'react';
 import GameGrid from './GameGrid';
 import { GameOfLife } from '../../lib/gameOfLife';
-import { StartingCells } from '../../lib/startingCells';
+import { RandomStartingCells } from '../../lib/randomStartingCells';
 
 const getGridWidth = () => {
   if (typeof window === 'undefined') {
@@ -23,7 +23,7 @@ const getGridHeight = () => {
 
 const RandomGame: FC = () => {
   const [startingCells, setStartingCells] = useState(
-    new StartingCells(getGridHeight(), getGridWidth())
+    new RandomStartingCells(getGridHeight(), getGridWidth())
   );
   const [gameCells, setGameCells] = useState(startingCells.cells);
   const [gameOfLife] = useState(new GameOfLife());
@@ -37,7 +37,10 @@ const RandomGame: FC = () => {
   };
 
   const resetCells = () => {
-    const startingCells = new StartingCells(getGridHeight(), getGridWidth());
+    const startingCells = new RandomStartingCells(
+      getGridHeight(),
+      getGridWidth()
+    );
     setStartingCells(startingCells);
     setGameCells(startingCells.cells);
   };

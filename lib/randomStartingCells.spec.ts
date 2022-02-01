@@ -1,47 +1,47 @@
-import { StartingCells } from './startingCells';
+import { RandomStartingCells } from './randomStartingCells';
 
-describe('StartingCells tests', () => {
+describe('RandomStartingCells tests', () => {
   describe('Given height and width greater than zero', () => {
     const _height = 1080;
     const _width = 1920;
 
-    describe('when creating StartingCells', () => {
-      let startingCells: StartingCells;
+    describe('when creating RandomStartingCells', () => {
+      let randomStartingCells: RandomStartingCells;
 
       beforeEach(() => {
-        startingCells = new StartingCells(_height, _width);
+        randomStartingCells = new RandomStartingCells(_height, _width);
       });
 
       test('then computes a relative cells height', () => {
-        const actual = startingCells.cellsHeight;
+        const actual = randomStartingCells.cellsHeight;
         const expected = 98;
         expect(actual).toBe(expected);
       });
 
       test('then computes a relative cells width', () => {
-        const actual = startingCells.cellsWidth;
+        const actual = randomStartingCells.cellsWidth;
         const expected = 174;
         expect(actual).toBe(expected);
       });
 
       test('then has Cells', () => {
-        expect(startingCells.cells).toBeDefined();
+        expect(randomStartingCells.cells).toBeDefined();
       });
 
       test('then number of cells matches height', () => {
-        const actual = startingCells.cells.length;
+        const actual = randomStartingCells.cells.length;
         const expected = 98;
         expect(actual).toBe(expected);
       });
 
       test('then number of cells matches width', () => {
-        const actual = startingCells.cells[0].length;
+        const actual = randomStartingCells.cells[0].length;
         const expected = 174;
         expect(actual).toBe(expected);
       });
 
       test('then has mixture of ones', () => {
-        const actual = startingCells.cells[0].some(
+        const actual = randomStartingCells.cells[0].some(
           (cellValue) => cellValue === 1
         );
         const expected = true;
@@ -49,7 +49,7 @@ describe('StartingCells tests', () => {
       });
 
       test('then has mixture of zeros', () => {
-        const actual = startingCells.cells[0].some(
+        const actual = randomStartingCells.cells[0].some(
           (cellValue) => cellValue === 0
         );
         const expected = true;
@@ -62,23 +62,23 @@ describe('StartingCells tests', () => {
     const _height = 0;
     const _width = 0;
 
-    describe('when creating StartingCells', () => {
-      let startingCells: StartingCells;
+    describe('when creating RandomStartingCells', () => {
+      let randomStartingCells: RandomStartingCells;
 
       beforeEach(() => {
-        startingCells = new StartingCells(_height, _width);
+        randomStartingCells = new RandomStartingCells(_height, _width);
       });
 
       test('then has Cells', () => {
-        expect(startingCells.cells).toBeDefined();
+        expect(randomStartingCells.cells).toBeDefined();
       });
 
       test('then has cells height of zero', () => {
-        expect(startingCells.cellsHeight).toEqual(0);
+        expect(randomStartingCells.cellsHeight).toEqual(0);
       });
 
       test('then has cells width of zero', () => {
-        expect(startingCells.cellsWidth).toEqual(0);
+        expect(randomStartingCells.cellsWidth).toEqual(0);
       });
     });
   });
@@ -87,23 +87,23 @@ describe('StartingCells tests', () => {
     const _height = -1;
     const _width = -1;
 
-    describe('when creating StartingCells', () => {
-      let startingCells: StartingCells;
+    describe('when creating RandomStartingCells', () => {
+      let randomStartingCells: RandomStartingCells;
 
       beforeEach(() => {
-        startingCells = new StartingCells(_height, _width);
+        randomStartingCells = new RandomStartingCells(_height, _width);
       });
 
       test('then has Cells', () => {
-        expect(startingCells.cells).toBeDefined();
+        expect(randomStartingCells.cells).toBeDefined();
       });
 
       test('then has matching negative height', () => {
-        expect(startingCells.cellsHeight).toEqual(-1);
+        expect(randomStartingCells.cellsHeight).toEqual(-1);
       });
 
       test('then has matching negative width', () => {
-        expect(startingCells.cellsWidth).toEqual(-1);
+        expect(randomStartingCells.cellsWidth).toEqual(-1);
       });
     });
   });

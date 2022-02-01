@@ -1,4 +1,4 @@
-export class StartingCells {
+export class RandomStartingCells {
   public readonly cellsHeight: number;
   public readonly cellsWidth: number;
   public readonly cells: ReadonlyArray<ReadonlyArray<number>>;
