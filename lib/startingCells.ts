@@ -4,31 +4,35 @@ export class StartingCells {
   public readonly cells: ReadonlyArray<ReadonlyArray<number>>;
   private readonly _fillPercentage = 100;
 
-  constructor(windowHeight: number, windowWidth: number) {
-    this.cellsHeight = this.getCellsHeight(windowHeight);
-    this.cellsWidth = this.getCellsWidth(windowWidth);
+  constructor(height: number, width: number) {
+    this.cellsHeight = this.getCellsHeight(height);
+    this.cellsWidth = this.getCellsWidth(width);
     this.cells = this.getStartingCells(this.cellsHeight, this.cellsWidth);
   }
 
-  private getCellsHeight(windowHeight: number): number {
-    return this.getCellUnits(windowHeight);
+  private getCellsHeight(height: number): number {
+    return this.getCellUnits(height);
   }
 
-  private getCellsWidth(windowWidth: number): number {
-    return this.getCellUnits(windowWidth);
+  private getCellsWidth(width: number): number {
+    return this.getCellUnits(width);
   }
 
   private getStartingCells(
-    gridHeight: number,
-    gridWidth: number
+    cellsHeight: number,
+    cellsWidth: number
   ): ReadonlyArray<ReadonlyArray<number>> {
-    const fillerNumber = -1;
+    if (cellsHeight < 0 || cellsWidth < 0) {
+      return [];
+    }
 
-    return new Array<number>(gridHeight)
-      .fill(fillerNumber) //Cant apply map on undefined elements, need to set to null or some value first
+    const filler = null as unknown as number;
+
+    return new Array<number>(cellsHeight)
+      .fill(filler) //Cant apply map on undefined elements, need to set to null or some value first
       .map((_, y) =>
-        new Array<number>(gridWidth).fill(fillerNumber).map((__, x) => {
-          return this.isInAreaToRandomise(gridHeight, gridWidth, y, x)
+        new Array<number>(cellsWidth).fill(filler).map((__, x) => {
+          return this.isInAreaToRandomise(cellsHeight, cellsWidth, y, x)
             ? this.getRandomBinary()
             : 0;
         })
@@ -38,7 +42,7 @@ export class StartingCells {
   private getCellUnits(sizePixels: number): number {
     const cellDimensionPixels = 10;
     const cellMarginPixels = 1;
-    return Math.floor(sizePixels / (cellDimensionPixels + cellMarginPixels)); //- cellMarginPixels;
+    return Math.floor(sizePixels / (cellDimensionPixels + cellMarginPixels));
   }
 
   private isInAreaToRandomise(
