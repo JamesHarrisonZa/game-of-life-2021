@@ -1,9 +1,9 @@
-import { Flex } from '@chakra-ui/react';
-import { FC } from 'react';
-import Head from 'next/head';
-import Navbar from './Navbar';
-import Footer from './Footer';
-export const siteTitle = 'Game of life 2021';
+import { Flex } from "@chakra-ui/react";
+import { FC } from "react";
+import Head from "next/head";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
+export const siteTitle = "Game of life 2021";
 
 interface ownProps {
   children: React.ReactNode;

@@ -1,6 +1,6 @@
-import { Grid } from '@chakra-ui/react';
-import { FC } from 'react';
-import Cell from './Cell';
+import { Grid } from "@chakra-ui/react";
+import { FC } from "react";
+import Cell from "./Cell";
 
 interface ownProps {
   cells: ReadonlyArray<ReadonlyArray<number>>;

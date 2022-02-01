@@ -1,10 +1,10 @@
-import Head from 'next/head';
-import dynamic from 'next/dynamic';
-import { FC } from 'react';
-import Layout, { siteTitle } from '../../components/layout/Layout';
+import Head from "next/head";
+import dynamic from "next/dynamic";
+import { FC } from "react";
+import Layout, { siteTitle } from "../../components/layout/Layout";
 
 // Dont SSR this component as it relies on the screen dimensions
-const RandomGame = dynamic(() => import('../../components/game/RandomGame'), {
+const RandomGame = dynamic(() => import("../../components/game/RandomGame"), {
   ssr: false,
 });
 
