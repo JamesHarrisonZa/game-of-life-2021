@@ -22,8 +22,8 @@ const GameGrid: FC<ownProps> = ({ cells, height, width }) => {
 
   return (
     <Grid
-      templateRows={`repeat(${height}, 1fr)`}
-      templateColumns={`repeat(${width}, 1fr)`}
+      templateRows={`repeat(${height}, 40px)`}
+      templateColumns={`repeat(${width}, 40px)`}
       gap={1}
     >
       {mappedCells}

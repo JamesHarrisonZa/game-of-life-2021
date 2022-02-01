@@ -7,22 +7,18 @@ import { StartingCells } from '../../lib/startingCells';
 
 const getGridWidth = () => {
   if (typeof window === 'undefined') {
-    return 100;
+    return 0;
   }
-  if (window && window.innerWidth < 40) {
-    return 10;
-  }
-  return (window.innerWidth - 40) / 4; //TODO this better?
+  return window.innerWidth / 4;
 };
 
 const getGridHeight = () => {
   if (typeof window === 'undefined') {
-    return 100;
+    return 0;
   }
-  if (window && window.innerHeight < 260) {
-    return 65;
-  }
-  return (window.innerHeight - 260) / 4; //TODO this better?
+
+  const unavailableHeight = 216; //Looked into useMeasure from react-use
+  return (window.innerHeight - unavailableHeight) / 4;
 };
 
 const RandomGame: FC = () => {
@@ -122,13 +118,13 @@ const RandomGame: FC = () => {
           Reset Game
         </Button>
       </Center>
-      <Box>
+      <Center>
         <GameGrid
           cells={gameCells}
           height={startingCells.cellsHeight}
           width={startingCells.cellsWidth}
         />
-      </Box>
+      </Center>
     </Flex>
   );
 };

@@ -37,8 +37,8 @@ export class StartingCells {
 
   private getCellUnits(sizePixels: number): number {
     const cellDimensionPixels = 10;
-    const cellMarginPixels = 2;
-    return Math.floor(sizePixels / cellDimensionPixels) - cellMarginPixels;
+    const cellMarginPixels = 1;
+    return Math.floor(sizePixels / (cellDimensionPixels + cellMarginPixels)); //- cellMarginPixels;
   }
 
   private isInAreaToRandomise(
