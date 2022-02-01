@@ -2,6 +2,22 @@
 
 Playground for me to learn some new tech
 
+## Getting started
+
+```bash
+# Install packages
+npm ci
+
+# Install husky
+npm run prepare
+
+# Run tests
+npm test
+
+# Run the app
+npm run dev
+```
+
 ## [NextJS](https://nextjs.org/learn)
 
 ### Advantages
