@@ -6,7 +6,7 @@ describe("StartingCells tests", () => {
     const _windowWidth = 1920;
 
     describe("when creating StartingCells", () => {
-      let startingCells;
+      let startingCells: StartingCells;
 
       beforeEach(() => {
         startingCells = new StartingCells(_windowHeight, _windowWidth);
@@ -14,13 +14,13 @@ describe("StartingCells tests", () => {
 
       test("then computes a relative CellsHeight", () => {
         const actual = startingCells.cellsHeight;
-        const expected = 106;
+        const expected = 98;
         expect(actual).toBe(expected);
       });
 
       test("then computes a relative CellsWidth", () => {
         const actual = startingCells.cellsWidth;
-        const expected = 188;
+        const expected = 174;
         expect(actual).toBe(expected);
       });
 
@@ -30,13 +30,13 @@ describe("StartingCells tests", () => {
 
       test("then number of cells matches height", () => {
         const actual = startingCells.cells.length;
-        const expected = 106;
+        const expected = 98;
         expect(actual).toBe(expected);
       });
 
       test("then number of cells matches width", () => {
         const actual = startingCells.cells[0].length;
-        const expected = 188;
+        const expected = 174;
         expect(actual).toBe(expected);
       });
 
