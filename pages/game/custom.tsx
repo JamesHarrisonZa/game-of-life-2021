@@ -1,7 +1,8 @@
-import { Center, Heading } from '@chakra-ui/react';
+import { Center } from '@chakra-ui/react';
 import { FC } from 'react';
 import Head from 'next/head';
 import Layout, { siteTitle } from '../../components/layout/Layout';
+import CustomGame from '../../components/game/CustomGame';
 
 const GameRandom: FC = () => {
   return (
@@ -11,7 +12,7 @@ const GameRandom: FC = () => {
       </Head>
 
       <Center>
-        <Heading>Will allow for customising the grid</Heading>
+        <CustomGame />
       </Center>
     </Layout>
   );
