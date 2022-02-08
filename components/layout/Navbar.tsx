@@ -26,11 +26,11 @@ const Navbar: FC = () => {
     <>
       <Box bg={bgColour} px={10}>
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
-          <Link href={'/'} passHref>
-            <Heading as="h2" size="lg">
-              Game of life 2022
-            </Heading>
-          </Link>
+          <Heading as="h2" size="lg">
+            <Link href={'/'}>
+              <a>Game of life 2022</a>
+            </Link>
+          </Heading>
 
           <Flex alignItems={'center'}>
             <Stack direction={'row'} spacing={7}>
