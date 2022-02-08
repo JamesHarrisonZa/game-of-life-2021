@@ -12,6 +12,7 @@ import {
   Stack,
   useColorMode,
   Center,
+  Heading,
 } from '@chakra-ui/react';
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 import { FC } from 'react';
@@ -19,17 +20,21 @@ import Link from 'next/link';
 
 const Navbar: FC = () => {
   const { colorMode, toggleColorMode } = useColorMode();
+  const bgColour = useColorModeValue('blue.200', 'blue.800');
+
   return (
     <>
-      <Box bg={useColorModeValue('gray.100', 'gray.900')} px={10}>
+      <Box bg={bgColour} px={10}>
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
-          <Link href={'/'}>
-            <a>Game of life 2021</a>
+          <Link href={'/'} passHref>
+            <Heading as="h2" size="lg">
+              Game of life 2022
+            </Heading>
           </Link>
 
           <Flex alignItems={'center'}>
             <Stack direction={'row'} spacing={7}>
-              <Button onClick={toggleColorMode}>
+              <Button bg={bgColour} onClick={toggleColorMode}>
                 {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
               </Button>
 

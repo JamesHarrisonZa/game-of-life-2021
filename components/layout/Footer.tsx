@@ -9,11 +9,9 @@ import { FC } from 'react';
 import Link from 'next/link';
 
 const Footer: FC = () => {
+  const bgColour = useColorModeValue('blue.200', 'blue.800');
   return (
-    <Box
-      bg={useColorModeValue('gray.100', 'gray.900')}
-      color={useColorModeValue('gray.700', 'gray.200')}
-    >
+    <Box bg={bgColour}>
       <Container
         as={Stack}
         maxW={'6xl'}

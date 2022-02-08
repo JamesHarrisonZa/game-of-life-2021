@@ -19,21 +19,21 @@ const Home: FC = () => {
         </Center>
         <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10}>
           <GameType title={'42'} linkUrl={'/game/forty-two'}>
-            <Text color={'gray.600'}>
+            <Text>
               {
                 'The starting position will display the answer to life the universe and everything before initiating the game'
               }
             </Text>
           </GameType>
           <GameType title={'Random'} linkUrl={'/game/random'}>
-            <Text color={'gray.600'}>
+            <Text>
               {
                 'The starting position will be randomised for you and you will be able to generate new random starting positions'
               }
             </Text>
           </GameType>
           <GameType title={'Custom'} linkUrl={'/game/custom'}>
-            <Text color={'gray.600'}>
+            <Text>
               {
                 'The grid will be interactive and you will be able to create your own unique starting position before initiating the game'
               }
