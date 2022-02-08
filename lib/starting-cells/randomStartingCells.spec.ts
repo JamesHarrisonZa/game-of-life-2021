@@ -41,8 +41,8 @@ describe('RandomStartingCells tests', () => {
       });
 
       test('then has mixture of ones', () => {
-        const actual = randomStartingCells.cells[0].some(
-          (cellValue) => cellValue === 1
+        const actual = randomStartingCells.cells.every((row) =>
+          row.some((cellValue) => cellValue === 1)
         );
         const expected = true;
         expect(actual).toBe(expected);
