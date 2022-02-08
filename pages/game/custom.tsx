@@ -1,8 +1,13 @@
 import { Center } from '@chakra-ui/react';
 import { FC } from 'react';
 import Head from 'next/head';
+import dynamic from 'next/dynamic';
 import Layout, { siteTitle } from '../../components/layout/Layout';
-import CustomGame from '../../components/game/CustomGame';
+
+// Dont SSR this component as it relies on the screen dimensions
+const CustomGame = dynamic(() => import('../../components/game/CustomGame'), {
+  ssr: false,
+});
 
 const GameRandom: FC = () => {
   return (
