@@ -1,4 +1,4 @@
-import { SimpleGrid, Center, VStack, Text } from '@chakra-ui/react';
+import { SimpleGrid, VStack, Text } from '@chakra-ui/react';
 import { FC } from 'react';
 import Head from 'next/head';
 import GameType from '../components/game/GameType';
@@ -14,9 +14,9 @@ const Home: FC = () => {
         <title>{siteTitle}</title>
       </Head>
       <VStack w="full" h="full" p={10} spacing={10}>
-        <Center p={4}>
+        <Text as="b">
           <FormattedDate date={todayDate} />
-        </Center>
+        </Text>
         <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10}>
           <GameType title={'42'} linkUrl={'/game/forty-two'}>
             <Text>
