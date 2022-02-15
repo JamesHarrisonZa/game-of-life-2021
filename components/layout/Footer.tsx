@@ -31,7 +31,7 @@ const Footer: FC = () => {
           <Link href={'/info/about'}>About</Link>
           <Link href={'/info/contact'}>Contact</Link>
         </Stack>
-        <Text>© 2021 James Harrison</Text>
+        <Text>© 2022 James Harrison</Text>
       </Container>
     </Box>
   );

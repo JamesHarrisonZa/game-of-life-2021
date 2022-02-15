@@ -3,7 +3,7 @@ import { FC } from 'react';
 import Head from 'next/head';
 import Navbar from './Navbar';
 import Footer from './Footer';
-export const siteTitle = 'Game of life 2021';
+export const siteTitle = 'Game of life 2022';
 
 interface ownProps {
   children: React.ReactNode;
@@ -15,7 +15,7 @@ const Layout: FC<ownProps> = ({ children }: ownProps) => (
       <link rel="icon" href="/favicon.ico" />
       <meta
         name="description"
-        content="Welcome to my tech demo. Game of life 2021"
+        content="Welcome to my tech demo. Game of life 2022"
       />
       <meta name="og:title" content={siteTitle} />
     </Head>

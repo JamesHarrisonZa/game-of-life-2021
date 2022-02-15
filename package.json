@@ -1,6 +1,6 @@
 {
-  "name": "game-of-life-2021",
-  "version": "2021.0.42",
+  "name": "game-of-life-2022",
+  "version": "2022.0.42",
   "private": true,
   "engines": {
     "node": ">=12.22.0"
