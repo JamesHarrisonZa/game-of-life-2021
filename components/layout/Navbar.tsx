@@ -20,11 +20,13 @@ import Link from 'next/link';
 
 const Navbar: FC = () => {
   const { colorMode, toggleColorMode } = useColorMode();
-  const bgColour = useColorModeValue('blue.200', 'blue.800');
+  const gradientStartColour = useColorModeValue('cyan.400', 'cyan.600');
+  const gradientEndColour = useColorModeValue('pink.500', 'purple.600');
+  const bgGradient = `linear(to-r, ${gradientStartColour}, ${gradientEndColour})`;
 
   return (
     <>
-      <Box bg={bgColour} px={10}>
+      <Box bgGradient={bgGradient} px={10}>
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
           <Heading as="h2" size="lg">
             <Link href={'/'}>
@@ -34,7 +36,7 @@ const Navbar: FC = () => {
 
           <Flex alignItems={'center'}>
             <Stack direction={'row'} spacing={7}>
-              <Button bg={bgColour} onClick={toggleColorMode}>
+              <Button bg="inherit" onClick={toggleColorMode}>
                 {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
               </Button>
 

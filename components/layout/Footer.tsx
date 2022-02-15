@@ -9,9 +9,12 @@ import { FC } from 'react';
 import Link from 'next/link';
 
 const Footer: FC = () => {
-  const bgColour = useColorModeValue('blue.200', 'blue.800');
+  const gradientStartColour = useColorModeValue('cyan.400', 'cyan.600');
+  const gradientEndColour = useColorModeValue('pink.500', 'purple.600');
+  const bgGradient = `linear(to-r, ${gradientStartColour}, ${gradientEndColour})`;
+
   return (
-    <Box bg={bgColour}>
+    <Box bgGradient={bgGradient}>
       <Container
         as={Stack}
         maxW={'6xl'}
